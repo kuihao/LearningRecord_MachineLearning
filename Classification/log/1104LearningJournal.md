@@ -1,4 +1,4 @@
-# 2020/11/04-06
+# 2020/11/04-10
 來源：https://github.com/Sakura-gh/ML-notes/blob/master/ML-notes-md/6_Classification.md
 
 0.  Regression <b>不適用於分類</b>，因為<br>
@@ -44,7 +44,9 @@
     >>> 意義：欲計算 Likelihood 則要透過高斯分布，高斯分布的曲線是根據 mean μ, covariance ∑ 而有不同的變化<br>
     >>> 計算方法：<br>
     >>> 令 GD_μ∑(x) 為高斯分布的機率密度函數<br>
-    >>> 則 GD_μ∑(x) = 圖片<br> 
+    >>> 則 GD_μ∑(x) = 圖片<br>
+    >>> μ = ?<br>
+    >>> ∑ = ?<br>
     >>
     >> **Maximum Likelihood**
     >>> Like(μ*, ∑*) = arg max_μ∑ Like(μ, ∑)<br>
@@ -57,10 +59,13 @@
 
 0.  <b>判別 Function 的好壞__Loss Function</b><br>
     > 訓練時，if 資料輸出的預測類別「錯誤」then Loss++<br>
-    > 加總所有資料錯誤預測類別的次數
+    > 加總所有資料錯誤預測類別的次數<br>
+    > 或<br>
+    > 直接根據 Maximum Likelihood 來檢視 Function 的預測能力夠不夠好(?)
 
 0.  找到最好的 Function <br>
-    如何有效率地找到 Loss Function ？<br>
+    如何有效率地找到 Loss Function？<br>
+    > 直接算所有 x 的 mean(μ) 及 mean(∑)
 
 ---    
 * [補充 1] 如何解分類的問題？
