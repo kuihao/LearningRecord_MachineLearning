@@ -12,7 +12,7 @@
     > 本次使用機率模型 (**Generative Model**)<br>
     >> **目的**是給某個 **x 向量 (Features)** 作輸入，輸出 x **屬於某類別的機率**
     >
-    >> **假設**每筆資料皆是抽樣 (Sample) 自*同一個(?)* **高斯分布模型 (Gaussian Distribution)**
+    >> **假設**每筆資料皆是抽樣 (Sample) 自*同一個(?)* **高斯分布模型 (Gaussian Distribution Model)**
     >> **核心想法**是根據 Training Data 分布找到最接近的分布模型，如此一來對於 **任意 x** 都能**從該分布模型生成 (產生) x 屬於該類別的機率**
     >
     > 令 Model 為 <b>f(x)</b>，且 f(x) 內含 g(x)，g(x) 用來將連續資料轉換成離散型態</b><br>
@@ -25,47 +25,48 @@
     > = <b>[P(x|C1) * P(C1)] / [P(x|C1) * P(C1) + P(x|C2) * P(C2)]</b><br>
     > = <b>[P(x|C1) * P(C1)] / P(x)</b>
     >> <b>目標</b>是計算出 <b>P(C1|x)</b>，<b>x 屬於 C1 的機率</b>
+    >>> 根據貝氏定理，「取 x 的條件之下，是從 C1 取出的機率，相當於「從所有 Class 中取出 x 的機率」的條件之下，是從「取 C1 的前提下取出 x 的機率」
+    >>
     >>> 取 x 發生的前提下，若 x 和 C1 都發生的機率越大，<br>則 x 越有可能屬於 C1 類別
     >
-    >> 欲計算 P(C1|x) 則需要計算 Prior, Likelihood<br>
+    >> 欲計算 P(C1|x) 則需要計算 Prior (用古典機率), Likelihood (從高斯分布進行抽樣)<br>
     >> * Prior: P(C1), P(C2)<br>
     >> > P(C1) 意義：從特定的高斯分布抽樣出 C1 的機率<br>
     >>> 計算方法： ex. P(C1) = N(C1) / n
     >>
     >> * Likelihood: P(x|C1), P(x|C2)
     >>> P(x|C1) 意義：從 Class 1 抽樣出 x 的機率<br>
-    >>> 計算方法：假設資料皆抽樣自同個高斯分布，利用 **Generative Model** 來產生 P(x|C1) 及 P(x|C2)
+    >>> 計算方法：假設不同類別的 Traning Data 其實皆來自某個高斯分布所抽樣而來，因此可以運用利用 **Generative Model** 來產生(抽樣) P(x|C1) 及 P(x|C2)
     >>
     >> Generative Model: P(x)
-    >>> 意義：從特定的高斯分布抽樣出 P(x) 的機率<br>
-    >>> 計算方法：P(x) =  P(x|C1)P(C1) + P(x|C2)P(C2)
+    >>> 意義：從**特定的高斯分布**抽樣出 P(x) 的機率<br>
+    >>> 其中：P(x) =  P(x|C1)P(C1) + P(x|C2)P(C2)
+    >>
+    >>> 計算方法：**找出高斯分布 (Gaussian Distribution)**
     >>
     >> Gaussian Distribution
-    >>> 意義：欲計算 Likelihood 則要透過高斯分布，高斯分布的曲線是根據 mean μ, covariance ∑ 而有不同的變化<br>
+    >>> 意義：欲計算 Likelihood 要透過高斯分布，高斯分布的曲線是根據 mean (μ), covariance (∑) 而有不同的變化<br>
     >>> 計算方法：<br>
-    >>> 令 GD_μ∑(x) 為高斯分布的機率密度函數<br>
-    >>> 則 GD_μ∑(x) = 圖片<br>
-    >>> μ = ?<br>
-    >>> ∑ = ?<br>
+    >>> 令 GauDis_μ∑(x) 為高斯分布的機率密度函數<br>
+    >>> 則 GauDis_μ∑(x) = 圖片<br>
     >>
-    >> **Maximum Likelihood**
-    >>> Like(μ*, ∑*) = arg max_μ∑ Like(μ, ∑)<br>
+    >>> 如何找 μ 及 ∑ ?<br>
+    >>> 需要使用 Maximum Likelihood
+    >>
+    >> 用 **Maximum Likelihood** 找出好的 Gaussian Distribution
+    >>> 理論上要窮舉所有 μ, ∑，但實際上只要求平均便可得到最大值
+    >>> μ*, ∑* = arg max_μ∑ Like(μ, ∑)<br>
     >>> μ* = mean(x_n)<br>
     >>> ∑* = mean([x_n - μ*][x_n - μ*]^T)<br>
     >>
     >> **最終結果**<br>
-    >>> 將 Class 1 的 μ\*_1, ∑\*_1 代入 GD_μ∑(x) 得 P(x|C1)；對Class 2 同理則得 P(x|C2)<br>
-    >>> 最後將所有參數代入 g(x) 便結束
+    >>> 將 Class 1 的 μ\*_1, ∑\*_1 代入 GauDis(x) 得 P(x|C1)；對Class 2 同理則得 P(x|C2)<br>
+    >>> 最後將所有參數代入 g(x) 再用 f(x) 判斷輸出便結束
 
-0.  <b>判別 Function 的好壞__Loss Function</b><br>
-    > 訓練時，if 資料輸出的預測類別「錯誤」then Loss++<br>
-    > 加總所有資料錯誤預測類別的次數<br>
-    > 或<br>
-    > 直接根據 Maximum Likelihood 來檢視 Function 的預測能力夠不夠好(?)
-
-0.  找到最好的 Function <br>
-    如何有效率地找到 Loss Function？<br>
-    > 直接算所有 x 的 mean(μ) 及 mean(∑)
+0.  <b>判別 Function 的好壞 (Loss Function)</b><br>
+    > 意義：訓練階段用 Validation Set 判斷 Function 是否準確<br>
+    > if P(C1|x) > 0.5 then x 屬於 C1<br>
+    > 若預測錯誤，則 Loss++
 
 ---    
 * [補充 1] 如何解分類的問題？
@@ -92,11 +93,11 @@
     用 Generative Function 便可計算任意輸入 x 的相應輸出的類別機率值
 
 ---
-* [補充 2] 條件機率]
+* [補充 2] 條件機率
     > 令 n 為事件發生的總次數 <br>
-    > 令 N(A) 為 A 事件發生的次數 <br>
+    > 令 N(A) 為 A 事件發生的次數 (**邊緣機率**是某個事件發生的機率。邊緣機率是這樣得到的：在聯合機率中，把最終結果中不需要的那些事件合併成其事件的全機率而消失，對離散隨機變量用求和得全機率，對連續隨機變量用積分得全機率，稱為**邊緣化 Marginalization**) <br>
     > 令 N(B) 為 B 事件發生的次數 <br>
-    > 令 N(A∩B) 為 A 交集 B 的事件發生的次數  <br>
+    > 令 N(A∩B) 為 A 交集 B 的事件發生的次數 (**聯合機率**表示兩個事件共同發生的機率) <br>
     > 令 條件機率公式為 P(A|B) = P(A∩B) / P(B) <br>
     > 令 Likelihood 為 p(x|c)<br>
     > 令 Prior 為 p(x)<br>
@@ -104,11 +105,11 @@
   
     > <b>公式思考 1</b><br>
     > 在 n 次試驗中，根據中央極限定理：<br>
-    > P(A|B) ~= (N(AB) / n) / (N(B) / n)<br>
+    > P(A|B) ~= (N(A∩B) / n) / (N(B) / n)<br>
     > = N(A∩B) / N(B)<br>
 
     > <b>公式思考 2</b><br> 
     > 利用排列組合的乘加原理，條件機率就如同連續事件，因此使用乘法原理<br>
     > ex. P(A∩B) = P(A) * P(B|A) = P(B|A) * P(A)
 
-
+----
