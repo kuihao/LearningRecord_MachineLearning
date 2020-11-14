@@ -59,6 +59,7 @@
     >>> μ*, ∑* = arg max_μ∑ Like(μ, ∑)<br>
     >>> μ* = mean(x_n)<br>
     >>> ∑* = mean([x_n - μ*][x_n - μ*]^T)<br>
+    >>> Likeli(μ\*_1, μ\*_2, ∑\*_1, ∑\*_2) = Π\_(i=1->n)(GauDis_μ∑(x_i))
     >>
     >> **最終結果**<br>
     >>> 將 Class 1 的 μ\*_1, ∑\*_1 代入 GauDis(x) 得 P(x|C1)；對Class 2 同理則得 P(x|C2)<br>
