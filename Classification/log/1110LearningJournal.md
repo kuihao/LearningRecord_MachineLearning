@@ -39,11 +39,11 @@ Improvement of Classifiction
 * 令 σ(z) 為 P(C1|x) 的展開簡化
 * 欲計算 z 則必須將 Mean 和 Covarience 代入高斯分布公式
 * 若 Covarience 皆相同，則可進一步簡化
-![Sigmoid derive 00]( "Sigmoid derive 00")<br>
+![Sigmoid derive 00](https://github.com/kuihao/Learning-record__Machine-learning/blob/main/Classification/log/sigmoid_0.jpg "Sigmoid derive 00")<br>
 
-![Sigmoid derive 01]( "Sigmoid derive 01")<br>
+![Sigmoid derive 01](https://github.com/kuihao/Learning-record__Machine-learning/blob/main/Classification/log/sigmoid_1.jpg "Sigmoid derive 01")<br>
 
-![Sigmoid derive 02]( "Sigmoid derive 02")<br>
+![Sigmoid derive 02](https://github.com/kuihao/Learning-record__Machine-learning/blob/main/Classification/log/sigmoid_2.jpg "Sigmoid derive 02")<br>
 
-![Sigmoid derive 03]( "Sigmoid derive 03")<br>
+![Sigmoid derive 03](https://github.com/kuihao/Learning-record__Machine-learning/blob/main/Classification/log/sigmoid_3.jpg "Sigmoid derive 03")<br>
 * 最後將含有 x 的項、常數項各自合併，簡化得知這裡的 z 其實也是 Linear 
