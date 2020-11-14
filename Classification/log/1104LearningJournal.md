@@ -48,7 +48,8 @@
     >>> 意義：欲計算 Likelihood 要透過高斯分布，高斯分布的曲線是根據 mean (μ), covariance (∑) 而有不同的變化<br>
     >>> 計算方法：<br>
     >>> 令 GauDis_μ∑(x) 為高斯分布的機率密度函數<br>
-    >>> 則 GauDis_μ∑(x) = 圖片<br>
+    >>> 則 GauDis_μ∑(x) = 
+    >>> ![Gaussian Distribution Formula Solution](https://github.com/kuihao/Learning-record__Machine-learning/blob/main/Classification/log/%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83%E5%85%AC%E5%BC%8F.jpg "Gaussian Distribution Formula Solution")<br>
     >>
     >>> 如何找 μ 及 ∑ ?<br>
     >>> 需要使用 Maximum Likelihood
