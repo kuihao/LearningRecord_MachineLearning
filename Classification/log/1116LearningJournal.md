@@ -8,13 +8,23 @@ Date: 2020/11/16<br>
 1. Preparing Data
 
         Load and normalize (正規化) data, and then split training data into training set (訓練集) and development set (發展集) .
+
+    * 標準化使用 Z-Score
+        * train：bool 設定 X 是否為訓練集
+        * specified_column：設定需要被標準化的行，none 表示全部標準化
+        * X_mean：計算每一行的均值
+        * X_std：計算每一行的標準差
+
 2. Define Some Useful Functions
 
         定義在訓練迴圈中被重複使用的函數
     *   def _shuffle(X, Y)
                 # This is the logistic regression function, parameterized by w and b
-    
+
     *   def _sigmoid(z)
+
+            np.clip(陣列, floor, ceiling) 重新計算 array 元素的值顯示範圍，超出邊界就以邊界值設定
+            
     *   def _f(X, w, b)
 
             This is the logistic regression function, parameterized by w and b
