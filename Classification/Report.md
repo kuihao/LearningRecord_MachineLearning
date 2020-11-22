@@ -6,7 +6,8 @@
 1. **Q：實作的 Generative Model 及 Logistic Regression 的準確率，何者較佳？Why？**
     <br>
     **A：**
-    <br>［方法 / 預測正確率］
+    <br>
+    **［方法 / 預測正確率］**
 
         Logistic Regression / Training accuracy = 0.88470
         Generative Model / Training accuracy =  0.86932
