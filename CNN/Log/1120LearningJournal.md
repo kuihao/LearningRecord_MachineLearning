@@ -26,7 +26,7 @@ Date: 2020/11/22<br>
     * 計算完畢之後便可得到 Layer 1 的 Output (藍色矩陣)
     * 使用矩陣表示法的好處是矩陣運算可以交付 GPU 進行運算，減輕 CPU 的負擔達到加速的效果
     <br>
-    ![DNN turn in to Matrix](https://github.com/kuihao/Learning-record__Machine-learning/blob/main/CNN/log/MatrixOperation.jpg "DNN turn in to Matrix")
+    ![DNN turn in to Matrix](https://github.com/kuihao/Learning-record__Machine-learning/blob/main/CNN/Log/MatrixOperation.jpg "DNN turn in to Matrix")
 
 6. 最終整個 Classifiction Neural Network 架構我們可以簡化為以下幾個部分：
     1. Input Vector (Input Layer)：輸入的資料集
