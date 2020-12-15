@@ -1,5 +1,5 @@
 # ML Lecture 10: Convolutional Neural Network
-Date: 2020/12/07
+Date: 2020/12/07 and 12/15
 Src: https://youtu.be/FrKWiRv254g
 
 ----
@@ -17,7 +17,7 @@ Src: https://youtu.be/FrKWiRv254g
     * 重複執行，Filter 數量是不會變的，深度也不會變
 5. Flatten
     * 將最後迭代執行多次 Convolution + Max Pooling 所得的小圖片拉直扔進 Feedforward Network 一切訓練工作就結束了
-
+# 2020/12/15
 6. 分析黑盒子 (分析 Filter)
     * 假設
         > Input: 1 個 28\*28 的 Image (1\*28\*28)<br>
