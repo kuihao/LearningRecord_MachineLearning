@@ -29,7 +29,7 @@ Src: https://youtu.be/FrKWiRv254g
     所以實際上第二層 Filter ((25+25)\*11\*11) 所看過的 Pixels 範圍有包含第一層 (25\*11\*11)。
     * Gradient Descent 反轉: 之前是固定 Input 用 Gradient Descent 找參數；現在想分析 Input (Filter) 為何，因此是固定參數並用 Gradient Ascent 找 Input。
     * 最後將最 Activation 的部分 Image 還原之後，此例會看到每個 Filter 最 Active (Activation 值越大，表示該部分圖片越是該 Filter 想過濾的 Pattern) 的圖案是各種線條。
-    * 使用相同方法就能查看 任意層的 Filter (較大的 Pattern) 或 Flattern 之後扔進 Fully-connection Network 的任一個 Neuron (更大的 Pattern) 或是查看任一個最終 Output (整個 Pattern 例如:完整的手寫數字)。<br><br>然而有趣的是，我們反推應算出來的圖案往往跟我們的原先預期差很多，例如此處反推的數字 1~8 的圖案都很像是電視機雜訊，但直接丟回 CNN 卻能被辨識為 1~8，顯然 CNN 學到的東西跟我們的認知是有落差的。
+    * 使用相同方法就能查看 任意層的 Filter (較大的 Pattern) 或 Flattern 之後扔進 Fully-connection Network 的任一個 Neuron (更大的 Pattern) 或是查看任一個最終 Output (整個 Pattern 例如:完整的手寫數字)。<br><br>然而有趣的是，我們反推應算出來的圖案往往跟我們的原先預期差很多，例如此處反推的數字 1 至 8 的圖案都很像是電視機雜訊，但直接丟回 CNN 卻能被辨識為 1 至 8，顯然 CNN 學到的東西跟我們的認知是有落差的。
     * 當然我們會更想知道如何讓反算出來的圖案更接近我們想要的樣子，所以方法就是在使用 Gradient Descent/ Ascent 時，加上一些 Constraint (限制)，來把不可能是我們所要的圖片給過濾掉，這就是還原字體 (或創造新字體 (Generate))。而這個在 Gradient 時附加 Constraint 的想法，實作上就是 Regularization (正規化)，也就是實際上對 Loss Function 加上特定參數值再去做 Gradient 計算。
     * 此例的想法是圖片裡白色的部分相當於筆跡墨水的 Pattern，但應該只有少部分地方有塗白色才對，因此對 Activation Function 所檢測的 X_ij 取絕對值再加起來並附於 Activation Function 之中，意義就是雖然有些 X_ij 很 Active，但不是人類所要找的 X_ij (圖案)，而取決對值再相加其實就是 L1 Regularization。<br><br>最後會得到一個似乎比較像數字的圖片，當然也有其他方法能讓他生成更接近數字的東西。
     * 這個方法就是 Deep Dream 的精神，我們希望機器在看完圖片之後，能自動加上他所看到的東西，這樣能幫助我們分析它到底 Filter 了什麼、怎麼判斷。<br><br>我們輸入一張原圖至 CNN 之後，再對 CNN Hidden Layer 參數跨大化 (正值更正、負值更負)，這樣 CNN 就會更認為原圖是他每個 Filter 想要找的東西。
