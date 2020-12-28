@@ -16,20 +16,11 @@ Tips:
 # import cv2
 from cv2 import cv2 # In VScode use this code
 
-<<<<<<< HEAD
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-=======
-cap = cv2.VideoCapture(1)
->>>>>>> 2b009985213951b3356718271058904f8168eef3
 if not cap.isOpened():
     print("Cannot open camera")
     exit()
 
-<<<<<<< HEAD
-print("fin")
-
-=======
->>>>>>> 2b009985213951b3356718271058904f8168eef3
 while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
