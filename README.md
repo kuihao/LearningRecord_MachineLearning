@@ -1,4 +1,6 @@
-# Learning-record__Machine-learning
+# DataMining (SocialNetwork)
+* Apriori, ID3, DBSCAN, PrefixSpan. [Github-Link](https://github.com/kuihao/DataMining_SocialNetworkAnalisis)
+# Learning-record_Machine-learning
 Learning ML (machine learning) via Prof. Hung-Yi Lee’s OCW (Open Course Ware)
 * Regression, Gradient Descent: [Project (PM2.5 prediction + Paspberry Pi)](https://github.com/kuihao/AIoT_Temperature-Humidity-and-Prediction-using-RaspberryPi)
 
